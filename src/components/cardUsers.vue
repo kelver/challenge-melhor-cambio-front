@@ -22,8 +22,8 @@
                 </div>
             </div>
             <div class="card-buttons">
-                <button v-bind:data-section="'#about-' + data.id" class="is-active">ABOUT</button>
-                <button v-bind:data-section="'#experience-' + data.id">EXPERIENCE</button>
+                <button v-bind:data-section="'#about-' + data.id" class="is-active">Sobre</button>
+                <button v-bind:data-section="'#experience-' + data.id">Repositórios</button>
             </div>
         </div>
     </div>
@@ -70,11 +70,6 @@ export default {
         buttons.forEach((btn) => {
             btn.addEventListener("click", handleButtonClick);
         });
-
     }
 }
 </script>
-
-<style scoped>
-
-</style>
