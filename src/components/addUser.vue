@@ -1,6 +1,6 @@
 <template>
     <div class="btnFabWrap">
-        <div class="btn-fab d-flex justify-content-center align-items-center">
+        <div class="btn-fab bg-pink d-flex justify-content-center align-items-center">
             <div class="wrap">
                 <div class="icon">
                     <font-awesome-icon class="text-white" icon="fa-solid fa-plus" size="2x" />
@@ -11,23 +11,27 @@
             <header>
                 <h1>Adicione um novo usuário</h1>
             </header>
-            <input name="login" placeholder="@githubLogin" type="text" value=""><br>
-            <button class="btnSend" name="submit" type="button" @click="fetchNewUser">Enviar</button>
+            <input name="login" placeholder="@githubLogin" type="text" v-model="this.login"
+                   @keyup.enter="this.fetchUser"><br>
+            <button class="btnSend bg-pink" name="submit" type="button" @click="this.fetchUser">Enviar</button>
         </div>
     </div>
 </template>
 
 <script>
-import {mapActions, storeToRefs} from "pinia";
+import {mapActions} from "pinia";
 import { useMainStore } from "../store/main.js";
 
 export default {
     name: "addUser",
+    data() {
+        return {
+            login: ''
+        }
+    },
     setup() {
         const { fetchNewUser } = useMainStore();
-        const { users } = storeToRefs(useMainStore());
         return {
-            users,
             fetchNewUser
         }
     },
@@ -45,7 +49,14 @@ export default {
         });
     },
     methods: {
-        ...mapActions('main', ['fetchNewUser'])
+        fetchUser() {
+            if(this.login !== '') {
+                this.fetchNewUser(this.login);
+                this.login = '';
+            }
+        },
+
+        ...mapActions('main', ['fetchNewUser']),
     }
 }
 </script>

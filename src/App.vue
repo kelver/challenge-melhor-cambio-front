@@ -4,32 +4,8 @@ import addUser from "./components/addUser.vue";
 </script>
 
 <script>
-import usernames from './data/users.json'
-import axios from "axios";
-
 export default {
     name: 'App',
-    data() {
-        return {
-            data: [],
-        }
-    },
-    mounted() {
-        usernames.data.forEach((user) => {
-            axios.get(`https://api.github.com/users/${user}`)
-                .then((response) => {
-                    this.data.push({
-                        'id': response.data.id,
-                        'username': response.data.login,
-                        'name' : response.data.name,
-                        'about' : (response.data.bio?.substring(0,200)) || 'No bio',
-                        'avatar' : response.data.avatar_url,
-                        'register' : response.data.created_at,
-                        'repos' : response.data.public_repos,
-                    })
-                })
-        })
-    }
 }
 </script>
 
@@ -40,15 +16,14 @@ export default {
             <hr>
         </div>
         <div class="container">
-            <div class="row gap-3">
-                <cardUsers :data="users" v-for="(users, index) in data" :key="index" />
-            </div>
+            <cardUsers />
         </div>
         <addUser />
     </div>
 </template>
 
 <style scoped>
+$dark: #f0f;
 .logo {
   height: 6em;
   padding: 1.5em;
