@@ -1,5 +1,6 @@
 <script setup>
 import cardUsers from "./components/cardUsers.vue";
+import addUser from "./components/addUser.vue";
 </script>
 
 <script>
@@ -43,6 +44,7 @@ export default {
                 <cardUsers :data="users" v-for="(users, index) in data" :key="index" />
             </div>
         </div>
+        <addUser />
     </div>
 </template>
 
