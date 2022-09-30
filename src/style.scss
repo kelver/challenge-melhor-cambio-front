@@ -1,4 +1,11 @@
+$pink: #e62794;
+$theme-colors: (
+    "pink": $pink
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap';
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+
 .card {
   max-width: 340px;
   margin: auto;
@@ -14,19 +21,17 @@
   box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-.card[data-state="#about"] {
-  height: 390px;
+.card .about {
+  height: 140px;
+  max-height: 140px !important;
 }
-.card[data-state="#about"] .card-main {
+.card.about .card-main {
   padding-top: 0;
 }
 
-.card[data-state="#contact"] {
-  height: 430px;
-}
-
-.card[data-state="#experience"] {
-  height: 550px;
+.card .experience {
+  height: 390px;
+  max-height: 390px !important;
 }
 
 .card.is-active .card-header {
@@ -79,8 +84,8 @@
   will-change: top;
   background-size: cover;
   background-position: center;
-  filter: blur(30px);
-  transform: scale(1.2);
+  filter: blur(50px);
+  transform: scale(1.0);
   transition: 0.5s;
 }
 
@@ -139,7 +144,7 @@
 }
 
 .card-content {
-  padding: 20px;
+  padding: 5px;
 }
 
 .card-desc {
@@ -397,12 +402,8 @@
   background-color: #eee;
 }
 .btnFab .btnSend {
-  background-color: #00aeef;
   cursor: pointer;
   color: #fff;
-}
-.btnFab .btnSend:hover {
-  background-color: #26baf1;
 }
 .btnFab .img {
   background-image: url("https://4.bp.blogspot.com/-1J75Et4_5vc/WAYhWRVuMiI/AAAAAAAAArE/gwa-mdtq0NIqOrlVvpLAqdPTV4VAahMsQCPcB/s1600/barrel-we-love-subscribers-img.png");
@@ -410,7 +411,6 @@
 .btn-fab {
   width: 65px;
   height: 65px;
-  background-color: #00aeef;
   border-radius: 30px;
   float: right;
   box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.3);
@@ -443,7 +443,7 @@
 .btnFabWrap {
   position: fixed;
   right: 25px;
-  top: 0;
+  top: 70px;
   z-index: 1000;
 }
 
